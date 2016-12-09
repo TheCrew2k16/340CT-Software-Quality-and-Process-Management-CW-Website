@@ -8,7 +8,7 @@
             <?php
                 $action = "home";
                 include "includes\boostrap.php";
-                include "includes\header.php";
+                include "includes\header.php";         
             ?>
         </div>
     </body>

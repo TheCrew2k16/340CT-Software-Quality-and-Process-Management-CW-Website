@@ -13,7 +13,7 @@
         </div>
 
         <div class="container-fluid" style="padding-left:100px;padding-right:100px;padding-top:20px;">
-            <br><br><br><br>
+            <br>><br><br><br>
             <div class="jumbotron">
                 <h1>Request Report Page</h1>
                 <p>You can use this page to search for reports on coursework</p>                

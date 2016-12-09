@@ -13,14 +13,18 @@
             ?>
         </div>
         <br><br><br><br>
-        <p>TEST</p>
         <?php
-            echo "TEST";
-            $sql = "SELECT * FROM logintable";
-            $out = mysql_query($sql);
-            
+            $sql = "SELECT user FROM logintable";
+            mysqli_select_db($conn,"testdatabase");
 
+            $out = mysqli_query($conn,$sql);
+            echo "<br>";
+            while($row = mysqli_fetch_array($out))
+            {
+                echo "User: {$row['user']}<br>";
+            }    
+            mysqli_close($conn);
         ?>
     </body>
 
-</html>h
+</html>

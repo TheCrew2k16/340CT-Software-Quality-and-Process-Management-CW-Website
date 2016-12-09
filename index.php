@@ -14,6 +14,7 @@
         </div>
         <br><br><br><br>
         <?php
+            //below is an example of how to output data from the database
             $sql = "SELECT user FROM logintable";
             mysqli_select_db($conn,"testdatabase");
 

@@ -1,4 +1,5 @@
 <?php
+//this file will create the database and make the tables, navigate to "localhost/wevsite/makeDatabase.php" to run it
 include "includesdbconnect.php";
 mysqli_select_db("testdatabase");
 

@@ -1,3 +1,4 @@
+<!-- This file allows users to search for reports  -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,34 +35,26 @@
                 <script src="javascript\dl.js"></script>
                 <div class="list-group">
                     <?php
-                    include "includes\dbconnect.php";
-                    if(isset($_GET['studentID'])){
-                        $data = $_GET['studentID'];
-                        echo "Click on the results to download the reports";
-                        $sql = "SELECT * FROM submissiontable,cwTable,logintable WHERE submissiontable.coursework_ID=cwTable.coursework_ID and submissiontable.student_ID=logintable.student_ID and submissiontable.student_ID=".$data;
-                        mysql_select_db("cwdb");
-                        $out = mysql_query($sql)or die("request unsuccessful: ".mysql_error());
-                        $i = 0;
+                    include "includes\dbconnect.php"; //includes file that connects to he database
+                    if(isset($_GET['studentID'])){ //if id given by the form search it does the following
+                        $data = $_GET['studentID']; //sets data to the id handed to the page by the get
+                        echo "Click on the results to download the reports"; //prints instructions to the screen
+                        $sql = "SELECT * FROM submissiontable,cwTable,logintable WHERE submissiontable.coursework_ID=cwTable.coursework_ID and submissiontable.student_ID=logintable.student_ID and submissiontable.student_ID=".$data; //stores the statement that call all the rows in the submission table with the student_ID that is searched. It also gets the rows from the cwTable and logintable that that have the same student_ID and coursework_ID 
+                        mysql_select_db("cwdb"); //selects the cwdb database
+                        $out = mysql_query($sql)or die("request unsuccessful: ".mysql_error()); //executes the sql code above and if it doesnt work it retruns the error message
+                        $i = 0; //creates the incremetor
                         ?>  
                         <?php
-                        while($row = mysql_fetch_array($out))
+                        while($row = mysql_fetch_array($out)) //while there are rows outputted from the data bases it does the following
                         {   
-                            $i += 1;
-                            include "includes\download.php";
-                            //echo "<form action='toDL.txt' method='GET'>";
-                            ?> 
-                            <script>
-                                
-                            </script>    
-                            <?php
-                            echo "<a type='submit' href='toDL".$i.".txt' class='list-group-item' download> <h4 class='list-group-item-heading'>{$row['coursework_name']} - {$row['coursework_title']} - {$row['coursework_ID']}</h4>";
-                            //echo "Student ID:{$row['student_ID']} - Coursework ID: {$row['coursework_ID']}";
+                            $i += 1; //increments the incremetor by 1
+                            include "includes\makeReport.php"; //include the code that creates the report ready for download
+                            echo "<a type='submit' href='toDL".$i.".txt' class='list-group-item' download> <h4 class='list-group-item-heading'>{$row['coursework_name']} - {$row['coursework_title']} - {$row['coursework_ID']}</h4>"; //creates a list group item that will have information on the report and when clicked will download th the report, next few lines add more information from the report to the button so the user knows which report to select
                             echo "Student Name: {$row['forename']} {$row['surename']}";
                             echo ", Submission Date: {$row['submission_date']}";
                             echo ", Mark: {$row['mark']}";
                             echo ", Moderated: {$row['moderated']}";
                             echo "</a>";
-                            //echo "</form>";
                         }
                     }
                     ?>

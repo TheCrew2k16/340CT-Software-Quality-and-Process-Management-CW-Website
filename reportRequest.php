@@ -41,13 +41,20 @@
                         $sql = "SELECT * FROM submissiontable WHERE student_ID=".$data;
                         mysql_select_db("cwdb");
                         $out = mysql_query($sql)or die("request unsuccessful: ".mysql_error());
-                        $i = 0
+                        $i = 0;
+                        ?>  
+                        <?php
                         while($row = mysql_fetch_array($out))
                         {   
                             $i += 1;
                             include "includes\download.php";
-                            //echo "<form action='toDL.txt' method='GET'>";     
-                            echo "<a type='submit' onclick='' class='list-group-item'> <h4 class='list-group-item-heading'>{$row['submission_ID']}</h4>";
+                            //echo "<form action='toDL.txt' method='GET'>";
+                            ?> 
+                            <script>
+                                
+                            </script>    
+                            <?php
+                            echo "<a type='submit' href='toDL".$i.".txt' class='list-group-item' download> <h4 class='list-group-item-heading'>{$row['submission_ID']}</h4>";
                             echo "Student ID:{$row['student_ID']} - Coursework ID: {$row['coursework_ID']}";
                             echo ", Submission Date: {$row['submission_date']}";
                             echo ", Mark: {$row['mark']}";

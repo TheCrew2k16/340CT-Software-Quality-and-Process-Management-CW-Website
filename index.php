@@ -15,16 +15,16 @@
         <br><br><br><br>
         <?php
             //below is an example of how to output data from the database
-            $sql = "SELECT user FROM logintable";
-            mysqli_select_db($conn,"testdatabase");
+            $sql = "SELECT forename FROM logintable";
+            mysql_select_db("cwdb");
 
-            $out = mysqli_query($conn,$sql);
+            $out = mysql_query($sql)or die("Could not access logintable: ".mysql_error());
             echo "<br>";
-            while($row = mysqli_fetch_array($out))
+            while($row = mysql_fetch_array($out))
             {
-                echo "User: {$row['user']}<br>";
+                echo "User: {$row['username']}<br>";
             }    
-            mysqli_close($conn);
+            mysql_close($conn);
         ?>
     </body>
 

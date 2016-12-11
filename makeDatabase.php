@@ -3,7 +3,7 @@
 include "includes\dbconnect.php";
 
 mysql_query("DROP DATABASE cwdb");
-mysql_query("CREATE DATABASE cwdb",$conn)or die("Could not add cwdb database: ".mysql_error());
+mysql_query("CREATE DATABASE cwdb")or die("Could not add cwdb database: ".mysql_error());
 
 mysql_select_db("cwdb");
 
@@ -18,8 +18,8 @@ mysql_query("CREATE TABLE cwtable(".
 "coursework_title VARCHAR(50) NOT NULL,".
 "coursework_name VARCHAR(50) NOT NULL,".
 "module_ID VARCHAR(50) NOT NULL,".
-"issue_date VARCHAR(50) NOT NULL,".
-"deadline VARCHAR(50) NOT NULL,".
+"issue_date DATE NOT NULL,".
+"deadline DATE NOT NULL,".
 "PRIMARY KEY(coursework_ID))")or die("Could not add cwtable: ".mysql_error());
 
 mysql_query("CREATE TABLE submissiontable(".
@@ -28,9 +28,12 @@ mysql_query("CREATE TABLE submissiontable(".
 "coursework_ID INT NOT NULL,".
 "mark INT,".
 "moderated BIT NOT NULL,".
-"sunmission_date DATE,".
+"submission_date DATE,".
 "FOREIGN KEY(student_ID) REFERENCES logintable(student_ID),".
 "FOREIGN KEY(coursework_ID) REFERENCES cwtable(coursework_ID),".
-"PRIMARY KEY(submission_ID))")or die("test".mysql_error());
+"PRIMARY KEY(submission_ID))")or die("Could not add submissiontable: ".mysql_error());
 
+mysql_close($conn);
+
+echo "Database  successfully created";
 ?>

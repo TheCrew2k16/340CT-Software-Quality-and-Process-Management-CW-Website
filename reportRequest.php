@@ -13,7 +13,7 @@
         </div>
 
         <div class="container-fluid" style="padding-left:100px;padding-right:100px;padding-top:20px;">
-            <br>><br><br><br>
+            <br><br><br><br>
             <div class="jumbotron">
                 <form action="reportRequest.php" method="GET">
                     <h1>Request Report Page</h1>
@@ -36,17 +36,22 @@
                     <?php
                     include "includes\dbconnect.php";
                     if(isset($_GET['studentID'])){
-                        $data = $_GET;
-                        $sql = "SELECT * FROM cwtable WHERE studentID = '$data'";
-                        mysqli_select_db($conn,"testdatabase");
-                        $out = mysqli_query($conn,$sql);
-                        while($row = mysqli_fetch_array($out))
+                        $data = $_GET['studentID'];
+                        echo "attemting search: ".$data;
+                        $sql = "SELECT * FROM submissiontable WHERE student_ID=".$data;
+                        mysql_select_db("cwdb");
+                        $out = mysql_query($sql)or die("request unsuccessful: ".mysql_error());
+                        $i = 0
+                        while($row = mysql_fetch_array($out))
                         {   
+                            $i += 1;
                             include "includes\download.php";
                             //echo "<form action='toDL.txt' method='GET'>";     
-                            echo "<a type='submit' onclick='dlReport' class='list-group-item'> <h4 class='list-group-item-heading'>{$row['cwTitle']}/ID 2</h4>";
-                            echo "{$row['name']} - {$row['studentID']}";
-                            echo "{$row['description']}";
+                            echo "<a type='submit' onclick='' class='list-group-item'> <h4 class='list-group-item-heading'>{$row['submission_ID']}</h4>";
+                            echo "Student ID:{$row['student_ID']} - Coursework ID: {$row['coursework_ID']}";
+                            echo ", Submission Date: {$row['submission_date']}";
+                            echo ", Mark: {$row['mark']}";
+                            echo ", Moderated: {$row['moderated']}";
                             echo "</a>";
                             //echo "</form>";
                         }

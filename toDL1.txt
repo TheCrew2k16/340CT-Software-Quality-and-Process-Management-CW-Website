@@ -1,4 +1,7 @@
+Students Name: Bob Ross
 Students Number: 1
 Coursework ID: 1
+Coursework Name: painting 101
+Coursework Title: The Joy of Painting 
 Grade: 100
 Moderated: 1

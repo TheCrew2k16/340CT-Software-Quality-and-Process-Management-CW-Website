@@ -37,8 +37,8 @@
                     include "includes\dbconnect.php";
                     if(isset($_GET['studentID'])){
                         $data = $_GET['studentID'];
-                        echo "attemting search: ".$data;
-                        $sql = "SELECT * FROM submissiontable WHERE student_ID=".$data;
+                        echo "Click on the results to download the reports";
+                        $sql = "SELECT * FROM submissiontable,cwTable,logintable WHERE submissiontable.coursework_ID=cwTable.coursework_ID and submissiontable.student_ID=logintable.student_ID and submissiontable.student_ID=".$data;
                         mysql_select_db("cwdb");
                         $out = mysql_query($sql)or die("request unsuccessful: ".mysql_error());
                         $i = 0;
@@ -54,8 +54,9 @@
                                 
                             </script>    
                             <?php
-                            echo "<a type='submit' href='toDL".$i.".txt' class='list-group-item' download> <h4 class='list-group-item-heading'>{$row['submission_ID']}</h4>";
-                            echo "Student ID:{$row['student_ID']} - Coursework ID: {$row['coursework_ID']}";
+                            echo "<a type='submit' href='toDL".$i.".txt' class='list-group-item' download> <h4 class='list-group-item-heading'>{$row['coursework_name']} - {$row['coursework_title']} - {$row['coursework_ID']}</h4>";
+                            //echo "Student ID:{$row['student_ID']} - Coursework ID: {$row['coursework_ID']}";
+                            echo "Student Name: {$row['forename']} {$row['surename']}";
                             echo ", Submission Date: {$row['submission_date']}";
                             echo ", Mark: {$row['mark']}";
                             echo ", Moderated: {$row['moderated']}";

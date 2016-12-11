@@ -32,21 +32,5 @@ mysql_query("CREATE TABLE submissiontable(".
 "FOREIGN KEY(student_ID) REFERENCES logintable(student_ID),".
 "FOREIGN KEY(coursework_ID) REFERENCES cwtable(coursework_ID),".
 "PRIMARY KEY(submission_ID))")or die("test".mysql_error());
-/*
-
-
-mysql_query("CREATE TABLE submissiontable(".
-"submission_ID INT NOT NULL AUTO_INCREMENT".
-"test VARCHAR(50) NOT NULL".
-//"student_ID INT NOT NULL,".
-//"coursework_ID INT NOT NULL,".
-//"submission_status BIT NOT NULL,".
-//"mark INT,".
-//"moderated BIT NOT NULL,".
-//"submission_date DATE,".
-"PRIMARY KEY(submission_ID))")or die("Could not add submissiontable: ".mysql_error());
-*/
-
-
 
 ?>

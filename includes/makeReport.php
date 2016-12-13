@@ -5,7 +5,12 @@ fwrite($file,"Students Number: ".$row['student_ID']."\n"); //adds the student If
 fwrite($file,"Coursework ID: ".$row['coursework_ID']."\n"); //adds the courswork id
 fwrite($file,"Coursework Name: ".$row['coursework_name']."\n"); //adds the coursework name
 fwrite($file,"Coursework Title: ".$row['coursework_title']."\n"); //adds the coursework title
-fwrite($file,"Grade: ".$row['mark']."\n"); //adds the mark
-fwrite($file,"Moderated: ".$row['moderated']."\n"); //adds the moderation 
+fwrite($file,"Grade: ".$row['mark']."%\n"); //adds the mark
+if ($row['moderated'] == 1){ //its has been boderated it will adds true
+    fwrite($file,"Moderated: True\n");
+}
+else{ //if it hasnt been moderated it adds false
+    fwrite($file,"Moderated: False\n");
+}
 fclose($file); //closes the file
 ?>

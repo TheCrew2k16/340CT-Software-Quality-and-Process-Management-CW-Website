@@ -8,6 +8,10 @@
             <li <?php if ($action=="home"){echo "class='active'";}?> ><a href="index.php">Home</a></li> <!-- Homepage button -->
             <li <?php if ($action=="submit"){echo "class='active'";}?>><a href="submitPage.php">Submit CW</a></li> <!-- Submit CW page button -->
             <li <?php if ($action=="report"){echo "class='active'";}?>><a href="reportRequest.php">Request Report</a></li> <!-- request report button -->
+            <li <?php if ($action=="admin"){echo "class='active'";}?> ><a href="adminPanel.php">Admin Panel</a></li> <!-- Admin panel button -->
+            <li <?php if ($action=="status"){echo "class='active'";}?> ><a href="cwStatus.php">CW Status</a></li> <!-- CW status button -->
+            <li <?php if ($action=="download"){echo "class='active'";}?> ><a href="cwDL.php">CW Download</a></li> <!-- CW download button -->
+            <li <?php if ($action=="setup"){echo "class='active'";}?> ><a href="cwSetup.php">CW Setup</a></li> <!-- CW setup button -->
         </ul>
         <ul class="nav navbar-nav navbar-right"> <!-- puts the following buttons on the right of the navbar -->
         <?php

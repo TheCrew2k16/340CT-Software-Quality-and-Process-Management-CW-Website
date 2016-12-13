@@ -7,33 +7,31 @@
     <body>
         <div>
             <?php
-                $action = "report";
-                include "includes\boostrap.php";
-                include "includes\header.php";
+                $action = "report"; //sets the var $action to report, this will make the reports button on the nav bar be highlighted showing that the user is on the reports page. This happens in the header.php file
+                include "includes\boostrap.php"; //brings in the code that make the bootstrap css work 
+                include "includes\header.php"; //bring in the code that make the header that is on all pages of the site work
             ?>
         </div>
-
-        <div class="container-fluid" style="padding-left:100px;padding-right:100px;padding-top:20px;">
+        <div class="container-fluid" style="padding-left:100px;padding-right:100px;padding-top:20px;"> <!--makes a contrain with padding so the all the items on the page are not stretched to edge of the page -->
             <br><br><br><br>
-            <div class="jumbotron">
-                <form action="reportRequest.php" method="GET">
+            <div class="jumbotron"> <!--creates a jumbotron contrainer that is a grey box -->
+                <form action="reportRequest.php" method="GET"> <!--makes a form that will send what the user puts in the text box back to this page so the php code below can search the database -->
                     <h1>Request Report Page</h1>
                     <p>You can use this page to search for reports on coursework</p>                
                     <label for="basic-url">Student ID:</label>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="studentID" placeholder="studends ID number" required>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default"type="submit">Search</button>
+                    <div class="row"> <!-- puts items below in a row-->
+                        <div class="col-md-4"> <!-- puts the text box in a column to limit its size -->
+                            <div class="input-group"> <!-- makes an input group so the search button and the search box can be on the same line -->
+                                <input class="form-control" type="text" name="studentID" placeholder="studends ID number" required> <!-- makes a text box that is required -->
+                                <span class="input-group-btn"> <!-- puts the button in a span to attach it to the search box -->
+                                    <button class="btn btn-default"type="submit">Search</button> <!--creates the button -->
                                 </span>
                             </div>
                         </div>
                     </div>
                 </form>
                 <br>
-                <script src="javascript\dl.js"></script>
-                <div class="list-group">
+                <div class="list-group"> <!-- creates a list group for the serach results to be placed in -->
                     <?php
                     include "includes\dbconnect.php"; //includes file that connects to he database
                     if(isset($_GET['studentID'])){ //if id given by the form search it does the following
@@ -59,32 +57,7 @@
                     }
                     ?>
                 </div>
-                <!--
-                <div class="list-group">
-                    <a href="download.php" class="list-group-item">
-                        <h4 class="list-group-item-heading">Coursework Name/ID 1</h4>
-                        Coursework description 1
-                    </a>
-                    <a href="download.php" class="list-group-item">
-                        <h4 class="list-group-item-heading">Coursework Name/ID 2</h4>
-                        Coursework description 2                 
-                    </a>
-                    <a href="download.php" class="list-group-item">
-                        <h4 class="list-group-item-heading">Coursework Name/ID 3</h4>
-                        Coursework description 3
-                    </a>
-                    <a href="download.php" class="list-group-item">
-                        <h4 class="list-group-item-heading">Coursework Name/ID 4</h4>
-                        Coursework description 4
-                    </a>                       
-                </div>
-                -->
-                <div class="row-md-5">
-                    
-                </div>
             </div>
         </div>
-
     </body>
-
 </html>

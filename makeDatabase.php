@@ -43,10 +43,10 @@ mysql_query("INSERT INTO logintable".
 "(forename,surename,role,pass)".
 "VALUES".
 "('Bob','Ross','Student','happylittletree')")or die("could not add bobs login: ".mysql_error());
-mysql_query("INSERT INTO submissiontable").
-"(login_ID,courswork_ID,mark,moderated,submission_date)".
+mysql_query("INSERT INTO submissiontable".
+"(login_ID,coursework_ID,mark,moderated,submission_date)".
 "VALUES".
-"('1','1','100','1','2016-12-08')"or die("could not add bobs submission: ".mysql_error());
+"('1','1','100','1','2016-12-08')")or die("could not add bobs submission: ".mysql_error());
 
 /*
 //added query to insert some dummy data, just for my reference so i can test the login

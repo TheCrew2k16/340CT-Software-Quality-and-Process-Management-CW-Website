@@ -22,7 +22,7 @@
                     <div class="row"> <!-- puts items below in a row-->
                         <div class="col-md-4"> <!-- puts the text box in a column to limit its size -->
                             <div class="input-group"> <!-- makes an input group so the search button and the search box can be on the same line -->
-                                <input class="form-control" type="text" name="studentID" placeholder="studends ID number" required> <!-- makes a text box that is required -->
+                                <input class="form-control" type="text" name="studentID" placeholder="Student's ID number" required> <!-- makes a text box that is required -->
                                 <span class="input-group-btn"> <!-- puts the button in a span to attach it to the search box -->
                                     <button class="btn btn-default"type="submit">Search</button> <!--creates the button -->
                                 </span>

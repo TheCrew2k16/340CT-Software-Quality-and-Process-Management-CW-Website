@@ -8,9 +8,10 @@ mysql_query("CREATE DATABASE cwdb")or die("Could not add cwdb database: ".mysql_
 mysql_select_db("cwdb"); //selets the cwdb database
 
 mysql_query("CREATE TABLE logintable(".
-"student_ID INT NOT NULL AUTO_INCREMENT,".
+"login_ID INT NOT NULL AUTO_INCREMENT,".
 "forename VARCHAR(50) NOT NULL,".
 "surename VARCHAR(50) NOT NULL,".
+"password VARCAHR(50) NOT NULL".
 "PRIMARY KEY(student_ID))")or die("Could not add logintable: ".mysql_error()); //creates the logintable with all its columns. if it doesnt work it shows the error
 
 mysql_query("CREATE TABLE cwtable(".

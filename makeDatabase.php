@@ -28,6 +28,7 @@ mysql_query("CREATE TABLE submissiontable(".
 "submission_ID INT NOT NULL AUTO_INCREMENT,".
 "login_ID INT NOT NULL,".
 "coursework_ID INT NOT NULL,".
+"coursework_file LONGBLOB NOT NULL,".
 "mark INT,".
 "moderated BIT NOT NULL,".
 "submission_date DATE,".

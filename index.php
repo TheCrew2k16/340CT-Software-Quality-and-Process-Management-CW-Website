@@ -5,7 +5,7 @@
     </head>
     <body>
         <div>
-            <?php
+            <?php 
                 $action = "home";
                 include "includes\boostrap.php";
                 include "includes\header.php";     
@@ -15,14 +15,16 @@
         <br><br><br><br>
         <?php
             //below is an example of how to output data from the database
-            $sql = "SELECT forename FROM logintable";
+            $sql = "SELECT * FROM logintable";
             mysql_select_db("cwdb");
 
             $out = mysql_query($sql)or die("Could not access logintable: ".mysql_error());
             echo "<br>";
             while($row = mysql_fetch_array($out))
             {
-                echo "User: {$row['username']}<br>";
+                echo "User: {$row['forename']}<br>";
+                echo "Login_ID: {$row['login_ID']}<br>";
+                echo "Password: {$row['pass']}<br>";
             }    
             mysql_close($conn);
         ?>

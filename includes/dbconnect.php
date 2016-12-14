@@ -7,5 +7,5 @@ $conn = mysql_connect($server,$user,$pass); //connects to the database
 if(!$conn){ //if cant conntect it shows the error
     die("Could not connect: ". mysql_error());
 }
-
+mysql_select_db("cwdb")
 ?>

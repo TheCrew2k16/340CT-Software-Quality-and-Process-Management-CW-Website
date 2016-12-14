@@ -1,23 +1,24 @@
 <?php
-session_start();
-//Gets values passed from the login.php Form
-$username = $POST['user'];
-$password = $POST['pass'];
 
-$username = stripcslashes($username);
-$password = stripcslashes($password);
+include "includes\dbconnect.php";
 
-$username = mysql_real_escape_string($username);
-$password = mysql_real_escape_string($password);
+$uid = $_POST['uid'];
+$password = $_POST['pass'];
 
-mysql_connect("localhost", "root", "");
-mysql_select_db("cwdb");
+$sql = "SELECT * FROM logintable WHERE login_ID = '$uid' AND pass = '$password'";
+$result = mysql_query($sql);
 
-$result = mysql_query("select * from users where forename = '$username' and surname = $password'")or die("Failed to query database ".mysql_error());
-$row = mysql_fetch_array($result);
-if($row['username']==$username && $row['password'==$password]){
-    $SESSION['id'] = $row['id'];
-}else{
-    echo "Incorrect username or password"
+while ($row = mysql_fetch_array($result)){
+    echo $row['login_ID'];
 }
-header("Location: index.php");
+
+if($result){
+    echo "logged in";
+    $action = "index.php";
+    $logged = TRUE;
+    $_SESSION[] = $row['login_ID'];
+} else{
+    echo "Your username or password is incorrect!";
+}
+
+?>

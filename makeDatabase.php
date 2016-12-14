@@ -33,6 +33,14 @@ mysql_query("CREATE TABLE submissiontable(".
 "FOREIGN KEY(coursework_ID) REFERENCES cwtable(coursework_ID),".
 "PRIMARY KEY(submission_ID))")or die("Could not add submissiontable: ".mysql_error()); //creates the submissiontable with all its columns. if it doesnt work it shows the error
 
+//added query to insert some dummy data, just for my reference so i can test the login
+$sql = "INSERT INTO logintable ".
+        "(student_id,forename,surname) ".
+        "VALUES ".
+        "('000001','user','password')"or die("could not add data: ".mysql_error());
+mysql_query($sql,$conn);
+
+
 mysql_close($conn); //closes the connection to the database
 
 echo "Database  successfully created"; //shows the user that the database is created

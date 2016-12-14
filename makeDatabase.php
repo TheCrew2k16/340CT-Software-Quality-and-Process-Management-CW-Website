@@ -11,8 +11,9 @@ mysql_query("CREATE TABLE logintable(".
 "login_ID INT NOT NULL AUTO_INCREMENT,".
 "forename VARCHAR(50) NOT NULL,".
 "surename VARCHAR(50) NOT NULL,".
-"password VARCAHR(50) NOT NULL".
-"PRIMARY KEY(student_ID))")or die("Could not add logintable: ".mysql_error()); //creates the logintable with all its columns. if it doesnt work it shows the error
+"pass VARCHAR(50) NOT NULL,".
+"role VARCHAR(50) NOT NULL,".
+"PRIMARY KEY(login_ID))")or die("Could not add logintable: ".mysql_error()); //creates the logintable with all its columns. if it doesnt work it shows the error
 
 mysql_query("CREATE TABLE cwtable(".
 "coursework_ID INT NOT NULL AUTO_INCREMENT,".
@@ -25,21 +26,36 @@ mysql_query("CREATE TABLE cwtable(".
 
 mysql_query("CREATE TABLE submissiontable(".
 "submission_ID INT NOT NULL AUTO_INCREMENT,".
-"student_ID INT NOT NULL,".
+"login_ID INT NOT NULL,".
 "coursework_ID INT NOT NULL,".
 "mark INT,".
 "moderated BIT NOT NULL,".
 "submission_date DATE,".
-"FOREIGN KEY(student_ID) REFERENCES logintable(student_ID),".
+"FOREIGN KEY(login_ID) REFERENCES logintable(login_ID),".
 "FOREIGN KEY(coursework_ID) REFERENCES cwtable(coursework_ID),".
 "PRIMARY KEY(submission_ID))")or die("Could not add submissiontable: ".mysql_error()); //creates the submissiontable with all its columns. if it doesnt work it shows the error
 
+mysql_query("INSERT INTO cwtable".
+"(coursework_title,coursework_name,module_ID,issue_date,deadline)".
+"VALUES".
+"('The Joy of Painting','Painting 101',1,'2016-12-02','2016-12-09')")or die("could not add bobs cw: ".mysql_error());
+mysql_query("INSERT INTO logintable".
+"(forename,surename,role,pass)".
+"VALUES".
+"('Bob','Ross','Student','happylittletree')")or die("could not add bobs login: ".mysql_error());
+mysql_query("INSERT INTO submissiontable").
+"(login_ID,courswork_ID,mark,moderated,submission_date)".
+"VALUES".
+"('1','1','100','1','2016-12-08')"or die("could not add bobs submission: ".mysql_error());
+
+/*
 //added query to insert some dummy data, just for my reference so i can test the login
 $sql = "INSERT INTO logintable ".
         "(student_id,forename,surname) ".
         "VALUES ".
-        "('000001','user','password')"or die("could not add data: ".mysql_error());
+        "('000001','user','pass')"or die("could not add data: ".mysql_error());
 mysql_query($sql,$conn);
+*/
 
 
 mysql_close($conn); //closes the connection to the database

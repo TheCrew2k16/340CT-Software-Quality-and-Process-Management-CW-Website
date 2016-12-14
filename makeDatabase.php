@@ -25,7 +25,7 @@ mysql_query("CREATE TABLE cwtable(".
 "PRIMARY KEY(coursework_ID))")or die("Could not add cwtable: ".mysql_error()); //creates the cwtable with all its columns. if it doesnt work it shows the error
 
 mysql_query("CREATE TABLE submissiontable(".
-"submission_ID INT NOT NULL AUTO_INCREMENT,".
+//"submission_ID INT NOT NULL AUTO_INCREMENT,".
 "login_ID INT NOT NULL,".
 "coursework_ID INT NOT NULL,".
 "coursework_file LONGBLOB,".
@@ -34,7 +34,7 @@ mysql_query("CREATE TABLE submissiontable(".
 "submission_date DATE,".
 "FOREIGN KEY(login_ID) REFERENCES logintable(login_ID),".
 "FOREIGN KEY(coursework_ID) REFERENCES cwtable(coursework_ID),".
-"PRIMARY KEY(submission_ID))")or die("Could not add submissiontable: ".mysql_error()); //creates the submissiontable with all its columns. if it doesnt work it shows the error
+"PRIMARY KEY(login_ID, coursework_ID))")or die("Could not add submissiontable: ".mysql_error()); //creates the submissiontable with all its columns. if it doesnt work it shows the error
 
 mysql_query("INSERT INTO cwtable".
 "(coursework_title,coursework_name,module_ID,issue_date,deadline)".

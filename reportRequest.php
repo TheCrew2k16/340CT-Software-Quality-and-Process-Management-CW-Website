@@ -37,7 +37,7 @@
                     if(isset($_GET['studentID'])){ //if id given by the form search it does the following
                         $data = $_GET['studentID']; //sets data to the id handed to the page by the get
                         echo "Click on the results to download the reports"; //prints instructions to the screen
-                        $sql = "SELECT * FROM submissiontable,cwtable,logintable WHERE submissiontable.coursework_ID=cwTable.coursework_ID and submissiontable.login_ID=logintable.login_ID and submissiontable.login_ID=".$data; //stores the statement that call all the rows in the submission table with the login_ID that is searched. It also gets the rows from the cwTable and logintable that that have the same login_ID and coursework_ID 
+                        $sql = "SELECT * FROM submissiontable,cwtable,logintable WHERE submissiontable.coursework_ID=cwtable.coursework_ID and submissiontable.login_ID=logintable.login_ID and submissiontable.login_ID=".$data; //stores the statement that call all the rows in the submission table with the login_ID that is searched. It also gets the rows from the cwTable and logintable that that have the same login_ID and coursework_ID 
                         //mysql_select_db("cwdb"); //selects the cwdb database
                         $out = mysql_query($sql)or die("request unsuccessful: ".mysql_error()); //executes the sql code above and if it doesnt work it retruns the error message
                         $i = 0; //creates the incremetor

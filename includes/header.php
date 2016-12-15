@@ -44,17 +44,19 @@ session_start();
                 <?php
                     if(isset($_SESSION['login_ID'])){
                         echo "<form action = 'logout.php'>
-                        <button>LOG OUT</button>
+                        <button class='btn btn-danger'>LOG OUT</button>
                         </form>";
                     } else{
-                        echo "<form action='loginDetCheck.php' method='POST'>
-                    <input type='text' id='uid' name='uid' placeholder='Login ID'/>
-                    <input type='password' id='pass' name='pass' placeholder='Password'/>
-                    <button type='submit'>Login</button>
+                        echo "<form action='loginDetCheck.php' method='POST' class='form-inline'>
+                        <div class='form-group'>
+                            <input class='form-control' type='text' id='uid' name='uid' placeholder='Login ID'/>
+                        </div>
+                        <div class='form-group'>
+                            <input class='form-control' type='password' id='pass' name='pass' placeholder='Password'/>
+                        </div>
+                        <button type='submit' class='btn btn-default'>Login</button>
                     </form>";
                     }
-            ?> <li <?php if ($action=="register"){echo "class='active'";}?>><a href="register.php">Register</a></li>
-                <?php
             }
         ?>
         </ul>

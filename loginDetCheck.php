@@ -1,25 +1,22 @@
 <?php
 session_start();
+//database handler
 include "includes\dbconnect.php";
-
 $uid = $_POST['uid'];
 $password = $_POST['pass'];
-
+//retrieves the information from the login system and compares it with the input of the login
 $sql = "SELECT * FROM logintable WHERE login_ID = '$uid' AND pass = '$password'";
 $result = mysql_query($sql);
-
 while ($row = mysql_fetch_array($result)){
     echo $row['login_ID'];
-}
+    $_SESSION['login_ID'] = $row['login_ID'];
 
+}
 if($result){
     echo "logged in";
     $action = "index.php";
-    $logged = TRUE;
-    $_SESSION['login'] = "test";//$row['login_ID'];
-    header("location: http://localhost/website");
+    $_SESSION['login_ID'] = $row['login_ID'];
 } else{
     echo "Your username or password is incorrect!";
 }
-
-?>
+header("Location: index.php");

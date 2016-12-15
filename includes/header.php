@@ -23,7 +23,6 @@ session_start();
             {?>
             <br>
             <?php
-                echo $_SESSION["login_ID"];
                 ?>
                 <li <?php if ($action=="logout"){echo "class='active'";}?>><a href="logout.php">Logout</a></li>
                 <?php

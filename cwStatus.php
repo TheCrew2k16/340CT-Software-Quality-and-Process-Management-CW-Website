@@ -6,7 +6,7 @@
 	<body>
 		<div>
 			<?php
-				$action = "submission status";
+				$action = "status";
 				include "includes\boostrap.php";
 				include "includes\header.php";
 			?>

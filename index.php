@@ -13,24 +13,12 @@
             ?>
         </div>
         <br><br><br><br>
-        <?php
-        define ('SITE_ROOT', realpath(dirname(__FILE__)));
-            //below is an example of how to output data from the database
-            $sql = "SELECT * FROM logintable";
-            mysql_select_db("cwdb");
-
-            $out = mysql_query($sql)or die("Could not access logintable: ".mysql_error());
-            echo "<br>";
-            while($row = mysql_fetch_array($out))
-            {
-                echo "User: {$row['forename']}<br>";
-                echo "Login_ID: {$row['login_ID']}<br>";
-                echo "Password: {$row['pass']}<br>";
-            }    
-            mysql_close($conn);
-            //session_start();
-            echo $_SESSION['login_ID'];
-        ?>
+        <div class="container-fluid" style="padding-left:100px;padding-right:100px;padding-top:20px;"> <!--makes a contrain with padding so the all the items on the page are not stretched to edge of the page -->
+        <h1>Welcome to the Coursework System</h1>
+        <br>
+        <div class="col-md-5">
+        <div class="alert alert-info" role="alert">Please sign in before accessing specific sections of the site</div>
+        </div>
     </body>
 
 </html>

@@ -1,6 +1,9 @@
 <!-- This is the header file that can be included at the top of a file to have the banner at the top of a page-->
 <!-- To highlight one of the <li> on the navbar you must define the variable $action as one of the following: "home", "submit", "report", "login", "register", "logout"-->
 <!-- This has the ability to change the login and register to logout -->
+<?php
+session_start();
+?>
 <nav class="navbar navbar-default navbar-fixed-top" style="body { padding-top: 70px; }  "><!-- creates the navbar -->
     <div class="container-fluid"><!-- created the container field as fluid -->
         <a class="navbar-brand"><b>Coursework System</b></a> <!-- Makes the title in the top left of the navbar "Coursework System"-->
@@ -15,9 +18,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right"> <!-- puts the following buttons on the right of the navbar -->
         <?php
-            $logged = FALSE;//this is tempory. will be changed when login is completed
+        //added login to the front page. it checks for whether the user is logged in
             if(isset($_SESSION['login_ID']))//if true some is logged in so the login and register button is changed to logout`
-            {
+            {?>
+            <br>
+            <?php
                 echo $_SESSION["login_ID"];
                 ?>
                 <li <?php if ($action=="logout"){echo "class='active'";}?>><a href="logout.php">Logout</a></li>
@@ -25,9 +30,10 @@
             }
             else// by default login and register buttons will be displayed
             {
+                //if there are no users logged in, it will display the login system
                 ?><li style="padding-right: 10px; padding-top: 10px"</li>
                 <?php
-                    if(isset($SESSION['id'])){
+                    if(isset($_SESSION['login_ID'])){
                         echo "<form action = 'logout.php'>
                         <button>LOG OUT</button>
                         </form>";

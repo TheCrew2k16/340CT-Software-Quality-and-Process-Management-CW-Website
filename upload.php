@@ -1,4 +1,7 @@
 <?php
+//this file will create the database and make the tables, navigate to "localhost/wevsite/makeDatabase.php" to run it
+include "includes\dbconnect.php"; //brings in the code that connects to the database
+
 //Error reporting
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 1);
@@ -11,6 +14,8 @@ if (isset($_FILES["testname"]["name"])) {
     $error    = $_FILES['testname']['error'];
     $size     = $_FILES['testname']['size'];
     $ext      = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+    $data     = $_POST['CWID'];
+    $cwID = null;
     
     //Swich statements determines whether to contintue or whether to throw up error messages
     switch ($error) {
@@ -22,10 +27,18 @@ if (isset($_FILES["testname"]["name"])) {
                 $response = 'Invalid file extension.';
             }
             //Checks file size
-            if ( $size/10000/10000 > 2 ) {
+            if ( $size > 1000000 ) {
                 $valid = false;
                 $response = 'File size is exceeding maximum allowed size.';
             }
+            //Checks whether the coursework ID exists
+            $sql = mysql_query("SELECT * FROM cwtable WHERE coursework_ID = '$data'");
+            $num_rows = mysql_num_rows($sql);
+
+            if ($num_rows == 0) {
+                $valid = false;
+                $response = 'Coursework ID does not exist.';
+            }    
             //If deemed valid the file will be uploaded
             if ($valid) {
                 $targetPath =  dirname( __FILE__ ) . DIRECTORY_SEPARATOR. 'uploads' . DIRECTORY_SEPARATOR. $name;

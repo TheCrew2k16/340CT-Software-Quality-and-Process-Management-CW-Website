@@ -42,11 +42,11 @@ if (isset($_FILES["testname"]["name"])) {
             //If deemed valid the file will be uploaded
             if ($valid) {
                 $targetPath =  dirname( __FILE__ ) . DIRECTORY_SEPARATOR. 'uploads' . DIRECTORY_SEPARATOR. $name;
+                $sql = "INSERT INTO `submissiontable` (`login_ID`, `coursework_ID`, `coursework_file`, `mark`, `moderated`, `submission_date`) VALUES ('1', '1', $tmpName , NULL, '', $today)";
+                mysql_query($sql) or die(mysql_error());
                 move_uploaded_file($tmpName,$targetPath);
                 header( 'Location: index.php' ) ;
-                $sql = "INSERT INTO `submissiontable` (`login_ID`, `coursework_ID`, `coursework_file`, `mark`, `moderated`, `submission_date`) 
-                    VALUES ('1', '1', $tmpName , NULL, '', $today)";
-                mysql_query($sql) or die(mysql_error());
+                
                 exit;
             }
             break;

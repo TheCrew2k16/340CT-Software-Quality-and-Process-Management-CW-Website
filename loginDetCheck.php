@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include "includes\dbconnect.php";
 
 $uid = $_POST['uid'];
@@ -16,7 +16,8 @@ if($result){
     echo "logged in";
     $action = "index.php";
     $logged = TRUE;
-    $_SESSION[] = $row['login_ID'];
+    $_SESSION['login'] = "test";//$row['login_ID'];
+    header("location: http://localhost/website");
 } else{
     echo "Your username or password is incorrect!";
 }

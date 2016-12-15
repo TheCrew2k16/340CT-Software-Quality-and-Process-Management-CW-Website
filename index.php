@@ -28,6 +28,8 @@
                 echo "Password: {$row['pass']}<br>";
             }    
             mysql_close($conn);
+            session_start();
+            echo $_SESSION['login'];
         ?>
     </body>
 

@@ -17,7 +17,7 @@
         <h1>Welcome to the Coursework System</h1>
         <br>
         <div class="col-md-5">
-        <div class="alert alert-info" role="alert">Please sign in before accessing specific sections of the site</div>
+        <div class="alert alert-info" role="alert">Please <b>login in</b> before accessing specific sections of the site</div>
         </div>
     </body>
 

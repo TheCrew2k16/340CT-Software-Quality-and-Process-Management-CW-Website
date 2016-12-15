@@ -28,6 +28,7 @@ mysql_query("CREATE TABLE submissiontable(".
 //"submission_ID INT NOT NULL AUTO_INCREMENT,".
 "login_ID INT NOT NULL,".
 "coursework_ID INT NOT NULL,".
+"file_name VARCHAR(50) NOT NULL,".
 "coursework_file LONGBLOB,".
 "mark INT,".
 "moderated BIT NOT NULL,".
@@ -44,20 +45,6 @@ mysql_query("INSERT INTO logintable".
 "(forename,surename,role,pass)".
 "VALUES".
 "('Bob','Ross','Student','happylittletree')")or die("could not add bobs login: ".mysql_error());
-mysql_query("INSERT INTO submissiontable".
-"(login_ID,coursework_ID,mark,moderated,submission_date)".
-"VALUES".
-"('1','1','100','1','2016-12-08')")or die("could not add bobs submission: ".mysql_error());
-
-/*
-//added query to insert some dummy data, just for my reference so i can test the login
-$sql = "INSERT INTO logintable ".
-        "(student_id,forename,surname) ".
-        "VALUES ".
-        "('000001','user','pass')"or die("could not add data: ".mysql_error());
-mysql_query($sql,$conn);
-*/
-
 
 mysql_close($conn); //closes the connection to the database
 

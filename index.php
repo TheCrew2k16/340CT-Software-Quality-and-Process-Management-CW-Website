@@ -14,6 +14,7 @@
         </div>
         <br><br><br><br>
         <?php
+        define ('SITE_ROOT', realpath(dirname(__FILE__)));
             //below is an example of how to output data from the database
             $sql = "SELECT * FROM logintable";
             mysql_select_db("cwdb");

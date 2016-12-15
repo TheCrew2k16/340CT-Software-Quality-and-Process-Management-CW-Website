@@ -15,7 +15,7 @@ if (isset($_FILES["testname"]["name"])) {
     $size     = $_FILES['testname']['size'];
     $ext      = strtolower(pathinfo($name, PATHINFO_EXTENSION));
     $data     = $_POST['CWID'];
-    $today = date("Y-m-d");
+    $today = date('Y-m-d');
     
     //Swich statements determines whether to contintue or whether to throw up error messages
     switch ($error) {
@@ -42,9 +42,18 @@ if (isset($_FILES["testname"]["name"])) {
             //If deemed valid the file will be uploaded
             if ($valid) {
                 $targetPath =  dirname( __FILE__ ) . DIRECTORY_SEPARATOR. 'uploads' . DIRECTORY_SEPARATOR. $name;
-                $sql = "INSERT INTO `submissiontable` (`login_ID`, `coursework_ID`, `coursework_file`, `mark`, `moderated`, `submission_date`) VALUES ('1', '1', $tmpName , NULL, '', $today)";
+
+                $fp      = fopen($tmpName, 'r');
+                $content = fread($fp, filesize($tmpName));
+                $content = addslashes($content);
+                fclose($fp);
+
+                $sql = "INSERT INTO `submissiontable` (`login_ID`, `coursework_ID`,`file_name`, `coursework_file`, `mark`, `moderated`, `submission_date`) VALUES ('1', '1','$name', '$content' , NULL, '', '$today')";
+                
+
                 mysql_query($sql) or die(mysql_error());
                 move_uploaded_file($tmpName,$targetPath);
+
                 header( 'Location: index.php' ) ;
                 
                 exit;

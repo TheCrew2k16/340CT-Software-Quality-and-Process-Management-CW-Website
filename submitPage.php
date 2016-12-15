@@ -20,9 +20,13 @@
                     
                     <form action="upload.php" method="post" enctype="multipart/form-data">
                         <input class="form-control" type="text" name="CWID" placeholder="CourseWork ID Number" required>
-                        Select image to upload:
-                        <input type="file" name="testname" id="testname">
-                        <input type="submit" value="Upload Image" name="submit">
+                        <br>
+                        <b>Select image to upload:</b>
+                        <label class="btn btn-default btn-file">
+                            <input type="file" name="testname" id="testname" style="display: none;">Choose File</input>
+                        </label>
+                        <br><br>
+                        <input class="btn btn-primary" type="submit" value="Upload Image" name="submit">
                     </form>
 
         </div>

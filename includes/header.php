@@ -21,10 +21,9 @@ session_start();
         //added login to the front page. it checks for whether the user is logged in
             if(isset($_SESSION['login_ID']))//if true some is logged in so the login and register button is changed to logout`
             {?>
-            <br>
             <?php
                 ?>
-                <li <?php if ($action=="logout"){echo "class='active'";}?>><a href="logout.php">Logout</a></li>
+                <li><a href="logout.php">Logout</a></li>
                 <?php
             }
             else// by default login and register buttons will be displayed

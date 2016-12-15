@@ -29,7 +29,6 @@
             }    
             mysql_close($conn);
             //session_start();
-            echo $_SESSION['login'];
             echo $_SESSION['login_ID'];
         ?>
     </body>

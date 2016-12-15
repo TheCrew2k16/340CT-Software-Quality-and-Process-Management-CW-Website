@@ -12,7 +12,7 @@ while ($row = mysql_fetch_array($result)){
     $_SESSION['login_ID'] = $row['login_ID'];
     echo $row['login_ID'];
     if(isset($result)){
-        echo "logged in";
+
         $action = "index.php";
         $_SESSION['login_ID'] = $row['login_ID'];
         $row['login_ID'];

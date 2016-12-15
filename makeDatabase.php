@@ -45,6 +45,10 @@ mysql_query("INSERT INTO logintable".
 "(forename,surename,role,pass)".
 "VALUES".
 "('Bob','Ross','Student','happylittletree')")or die("could not add bobs login: ".mysql_error());
+mysql_query("INSERT INTO logintable".
+"(forename,surename,role,pass)".
+"VALUES".
+"('Dayvin','Ross','Staff','steve')")or die("could not add bobs login: ".mysql_error());
 
 mysql_close($conn); //closes the connection to the database
 
